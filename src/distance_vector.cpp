@@ -53,8 +53,61 @@ int main()
         table[y][x].nextHop = x;
         table[y][x].connected = true;
     }
+    
+    scanf("%d",&s);
 
-    //scanf("%d",&s);
+    for(int i=1;i<=s;i++)
+    {
+        scanf("%d %d",&x,&y);
+        /*
+        printf("\nNode %d :\n\n",y);
+        
+        for(int j=1;j<=n;j++)
+        {
+            printf("%d %d %d\n",j,table[y][j].dist,table[y][j].nextHop);
+        }
+        */
+        if(table[x][y].connected)
+        {
+            for(int j=1;j<=n;j++)
+            {
+                if(table[y][j].dist == -1 && table[x][j].dist != -1)
+                {
+                    table[y][j].dist = table[x][j].dist + 1;
+                    table[y][j].nextHop = x;
+                }
+                else
+                {
+                    if(table[x][j].dist != -1 && table[y][j].dist > table[x][j].dist + 1)
+                    {
+                        table[y][j].dist = table[x][j].dist + 1;
+                        table[y][j].nextHop = x;
+                    }
+                    else if(table[x][j].dist != -1 && table[y][j].dist == table[x][j].dist + 1)
+                    {
+                        table[y][j].nextHop = (table[y][j].nextHop > x)? x : table[y][j].nextHop;
+                    }
+                }
+            }
+        }
+        /*
+        printf("\n");
+        */
+        /*
+        for(int j=1;j<=n;j++)
+        {
+            printf("%d %d %d\n",j,table[y][j].dist,table[y][j].nextHop);
+        }
+        */
+    }
+
+    for(int i=1;i<=n;i++)
+    {
+        for(int j=1;j<=n;j++)
+        {
+            printf("%d %d\n",table[i][j].dist,table[i][j].nextHop);
+        }
+    }
 
     return 0;
 }

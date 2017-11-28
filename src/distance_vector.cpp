@@ -59,14 +59,7 @@ int main()
     for(int i=1;i<=s;i++)
     {
         scanf("%d %d",&x,&y);
-        /*
-        printf("\nNode %d :\n\n",y);
-        
-        for(int j=1;j<=n;j++)
-        {
-            printf("%d %d %d\n",j,table[y][j].dist,table[y][j].nextHop);
-        }
-        */
+
         if(table[x][y].connected)
         {
             for(int j=1;j<=n;j++)
@@ -90,15 +83,6 @@ int main()
                 }
             }
         }
-        /*
-        printf("\n");
-        */
-        /*
-        for(int j=1;j<=n;j++)
-        {
-            printf("%d %d %d\n",j,table[y][j].dist,table[y][j].nextHop);
-        }
-        */
     }
 
     for(int i=1;i<=n;i++)
